@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1200, initial-scale=1.0">
+    <title>Moon Parallax</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <section>
+        <img src="images/bg.jpg" id="bg">
+        <img src="images/moon.png" id="moon">
+        <img src="images/mountain.png" id="mountain">
+        <img src="images/road.png" id="road">
+        <h2 id="text">Moon Light</h2>
+    </section>
+    <div class="main">
+        <h2 id="title">Parallax Background Scrolling</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur arcu diam, rhoncus eget accumsan in, fringilla sit amet augue. Proin eu pretium quam, eget ultricies magna. Maecenas velit sapien, imperdiet a magna a, fringilla ornare dolor. Duis varius suscipit purus. Nam non posuere odio. Vivamus pretium ante sit amet eleifend aliquet. Maecenas congue risus vitae eros sodales consectetur. Nunc semper at orci a lobortis. Fusce eros augue, pellentesque at ligula id, molestie porttitor magna. Suspendisse aliquet tempor velit, vel pharetra nulla dapibus in. Ut lorem metus, posuere quis enim non, egestas maximus nibh.
+        </br></br>
+            Nullam interdum urna est, in accumsan lacus sodales ac. Integer commodo euismod lobortis. Phasellus dictum congue nulla, ut interdum neque sollicitudin in. Curabitur faucibus varius iaculis. Nulla et sapien pulvinar mauris tempor euismod. Phasellus vel lorem scelerisque, feugiat felis et, blandit ante. Integer pellentesque massa quis vehicula aliquam. Morbi a tellus odio. Nam nibh odio, commodo ut tellus nec, vulputate iaculis orci. Maecenas at diam sed sem ullamcorper rhoncus. Praesent congue molestie neque, quis ornare turpis porttitor in. Aenean pharetra in augue id pulvinar. Pellentesque vitae libero at libero semper faucibus. Integer scelerisque aliquam blandit. Suspendisse elementum dictum tortor, nec feugiat justo euismod eu. Sed arcu nunc, elementum quis erat eget, hendrerit fringilla magna.
+        </br></br>  
+            Quisque sed vulputate massa. Maecenas suscipit ante mauris, at maximus erat venenatis quis. Donec id cursus purus, eu faucibus magna. Pellentesque ac ipsum ipsum. Donec ut sem eu dui dictum hendrerit lacinia quis elit. Cras non euismod leo, eget consequat purus. Sed venenatis diam eget neque rutrum, a dignissim eros euismod. Donec vehicula velit eget libero commodo, nec imperdiet risus mollis. Duis convallis fermentum lectus, eu aliquet justo varius vel. Mauris at massa nibh. Aliquam tincidunt, ipsum a sollicitudin rhoncus, felis orci scelerisque ipsum, et facilisis libero dui nec sem.
+    </div>
+    </section>
+    <div class="buttons">
+        <a>Click ME!!</a>
+        <a>I make ripple effects</a>
+    </div>
+    <script type="text/javascript">
+        let bg = document.getElementById("bg");
+        let moon = document.getElementById("moon");
+        let mountain = document.getElementById("mountain");
+        let road = document.getElementById("road");
+        let text = document.getElementById("text");
+
+        const buttons = document.querySelectorAll('a');
+
+        window.addEventListener('scroll', function(){
+            var value = window.scrollY;
+
+            bg.style.top = value * 0.5 + 'px';
+            moon.style.left = -value * 0.5 + 'px';
+            mountain.style.top = -value * 0.15 + 'px';
+            road.style.top = value * 0.15 + 'px';
+            text.style.top = value * 1 + 'px';
+        })
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e){
+                let x = e.clientX - e.target.offsetLeft; // e.target.offsetLeft = position of the button
+                let y = e.clientY - e.target.offsetTop + 985;  // e.target.clientY = position of the click
+
+                let ripples = document.createElement('span');
+                ripples.style.left = x + 'px';
+                ripples.style.top = y + 'px';
+                console.log("ripples style left = " + ripples.style.left);
+                console.log("ripples style top = " + ripples.style.top);
+                this.appendChild(ripples);
+
+                setTimeout(() => {
+                ripples.remove()
+                },1000);
+            })
+        })
+    </script>
+</body>
+</html>
