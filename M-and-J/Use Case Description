@@ -1,9 +1,0 @@
-Join the Game Use Case:
-Participants: Player, Organizer
-A player who wants to join the game should be registered to the system first. A player may not be qualified for some reasons.
-The organizer will then let the player join the game.
-
-
-Conduct Tournament Use Case:
-Participants: Organizer
-The organizer can conduct a tournament if the game is already added on the system.
